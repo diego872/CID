@@ -22,10 +22,13 @@ class SimpleLinearRegression:
               self.beta_0 = ((sum_x_squared * sum_y)-(sum_x*sum_xy))/((n*sum_x_squared)-sum_x ** 2)
               self.beta_1 = ((n*sum_xy)-(sum_x*sum_y))/((n*sum_x_squared)-sum_x ** 2)
 
-        def imprimir_ecuación(self):
+        def predecir_valor(self):
             #Imprimir la ecuación de regresión con los valores calculados
+            valorUsuario=int(input("Ingresa el valor de gastos de publicidad: "))
+            valorEstimado=self.beta_0 + (self.beta_1*valorUsuario)
             print(f"Resultado del calculo de nuestros parametros: β0={self.beta_0:.2f} y β1={self.beta_1:.2f}")
-            print(f"En nuestra formula se ve así: ŷ = {self.beta_0:.2f} + {self.beta_1:.2f}x")
+            print(f"En nuestra formula se ve así: ŷ = {self.beta_0:.2f} + ({self.beta_1:.2f})({valorUsuario})")
+            print(f"El valor de ventas estimado es: {valorEstimado:.2f}")
 
 #Datos hardcodeados
 x = [23,26,30,34,43,48,52,57,58]
@@ -37,5 +40,5 @@ modelo = SimpleLinearRegression(x,y)
 #Se calculan los coeficientes
 modelo.calcularCoeficientes()
 
-#Imprimir los resultados
-modelo.imprimir_ecuación()
+#Sustituir datos e imprimir resultado
+modelo.predecir_valor()
